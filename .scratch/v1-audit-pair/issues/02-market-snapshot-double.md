@@ -6,11 +6,11 @@
 
 **Triage:** ready-for-agent
 
-**Kanban:** Todo
+**Kanban:** Done
 
-- [ ] Falha do Market Data port → erro, sem Audit Report
-- [ ] Sucesso do dublê → Snapshot com circulating em human units no fluxo
-- [ ] Resposta de mercado inválida para o contrato → erro (fail-fast), não Report parcial
+- [x] Falha do Market Data port → erro, sem Audit Report
+- [x] Sucesso do dublê → Snapshot com circulating em human units no fluxo
+- [x] Resposta de mercado inválida para o contrato → erro (fail-fast), não Report parcial
 
 ## Feedback
 
@@ -18,4 +18,10 @@ Ao terminar a implementação: mover Kanban para `Feedback`, preencher a nota ab
 
 ## Implementation note
 
-_(vazio)_
+Market Data port devolve Result (`ok` + `data` unknown, ou falha). Auditor chama o dublê só depois dos guards do 01.
+
+- `ok: false` → `market_unavailable`, sem Report, Extrator não é chamado
+- payload que falha no Zod (`circulating` number finito, `price` opcional) → `market_contract_invalid`
+- sucesso → `{ ok: true, snapshot }` com circulating em human units
+
+Como verificar: `npm test` (7 testes) e `npm run typecheck`. Extrator ainda não entra no happy path — ticket 03.

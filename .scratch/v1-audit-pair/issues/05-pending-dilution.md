@@ -6,11 +6,11 @@
 
 **Triage:** ready-for-agent
 
-**Kanban:** Todo
+**Kanban:** Done
 
-- [ ] % de diluição pendente correto para um caso feliz
-- [ ] Nenhum label tipo saudável/alerta/limiar 20%
-- [ ] Só ocorre com Claim verificado (não com citação rejeitada)
+- [x] % de diluição pendente correto para um caso feliz
+- [x] Nenhum label tipo saudável/alerta/limiar 20%
+- [x] Só ocorre com Claim verificado (não com citação rejeitada)
 
 ## Feedback
 
@@ -18,4 +18,8 @@ Ao terminar a implementação: mover Kanban para `Feedback`, preencher a nota ab
 
 ## Implementation note
 
-_(vazio)_
+Finding `{ type: "pending_dilution", percent }` = `((max - circulating) / max) * 100` (2 casas). Só com Found + citação verificada e `max > 0` e `circulating <= max`. Sem labels de saúde/20%. Citação rejeitada → só `missing_max_supply`.
+
+Exemplo: max 1_000_000, circulating 210_000 → 79.
+
+Como verificar: `npm test` (14 no auditor). Source Conflict fica no 06.

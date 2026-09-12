@@ -1,0 +1,19 @@
+{
+  "name": "token-lens",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.2",
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4"
+  },
+  "dependencies": {
+    "@ai-sdk/openai": "^4.0.66",
+    "ai": "^7.0.99",
+    "zod": "^4.6.2"
+  }
+}

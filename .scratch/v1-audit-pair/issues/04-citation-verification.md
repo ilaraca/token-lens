@@ -6,11 +6,11 @@
 
 **Triage:** ready-for-agent
 
-**Kanban:** Todo
+**Kanban:** Done
 
-- [ ] Citação ausente no Document → Claim não gera Finding de diluição
-- [ ] Citação literal presente (com quebras de linha/whitespace equivalentes) → Claim verificado
-- [ ] Match não é fuzzy nem case-insensitive
+- [x] Citação ausente no Document → Claim não gera Finding de diluição
+- [x] Citação literal presente (com quebras de linha/whitespace equivalentes) → Claim verificado
+- [x] Match não é fuzzy nem case-insensitive
 
 ## Feedback
 
@@ -18,4 +18,6 @@ Ao terminar a implementação: mover Kanban para `Feedback`, preencher a nota ab
 
 ## Implementation note
 
-_(vazio)_
+Citation Normalization: NFC + colapsar whitespace; `includes` case-sensitive. Found + citação no Document → `verified: true` e o Claim alimenta o motor (ainda sem diluição). Found + citação inventada ou só diferença de caixa → `verified: false` e Finding `missing_max_supply` (não entra no motor).
+
+Como verificar: `npm test` (12 no auditor).

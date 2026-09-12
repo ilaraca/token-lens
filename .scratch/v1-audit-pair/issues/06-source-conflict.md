@@ -6,11 +6,11 @@
 
 **Triage:** ready-for-agent
 
-**Kanban:** Todo
+**Kanban:** Done
 
-- [ ] circulating > max → Source Conflict
-- [ ] max ≤ 0 → Source Conflict
-- [ ] Não há Pending Dilution “negativa” ou clamp silencioso nesses casos
+- [x] circulating > max → Source Conflict
+- [x] max ≤ 0 → Source Conflict
+- [x] Não há Pending Dilution “negativa” ou clamp silencioso nesses casos
 
 ## Feedback
 
@@ -18,4 +18,6 @@ Ao terminar a implementação: mover Kanban para `Feedback`, preencher a nota ab
 
 ## Implementation note
 
-_(vazio)_
+Found verificado + (`circulating > max` ou `max <= 0`) → `{ type: "source_conflict" }`. Sem `pending_dilution` (nada de % negativa nem clamp).
+
+Como verificar: testes “circulating exceeds” e “max supply is not positive”.

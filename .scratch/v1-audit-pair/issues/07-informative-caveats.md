@@ -6,11 +6,11 @@
 
 **Triage:** ready-for-agent
 
-**Kanban:** Todo
+**Kanban:** Done
 
-- [ ] Caveat verificado aparece no Report
-- [ ] Caveat inventado (não está no Document) não é aceito como Caveat
-- [ ] Percentual de diluição idêntico com ou sem Caveat honesto no mesmo max/circulating
+- [x] Caveat verificado aparece no Report
+- [x] Caveat inventado (não está no Document) não é aceito como Caveat
+- [x] Percentual de diluição idêntico com ou sem Caveat honesto no mesmo max/circulating
 
 ## Feedback
 
@@ -18,4 +18,4 @@ Ao terminar a implementação: mover Kanban para `Feedback`, preencher a nota ab
 
 ## Implementation note
 
-_(vazio)_
+Caveat só entra no Report se for substring (mesma Citation Normalization). Inventado → `caveats: null`. Diluição 79% idêntica com ou sem caveat honesto no mesmo max/circulating.

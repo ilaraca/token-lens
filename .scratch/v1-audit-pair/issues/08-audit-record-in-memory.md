@@ -6,11 +6,11 @@
 
 **Triage:** ready-for-agent
 
-**Kanban:** Todo
+**Kanban:** Done
 
-- [ ] Sucesso do Auditor persiste um Audit Record
-- [ ] Record inclui Document texto + hash, ids do Token, Claims e Findings
-- [ ] É possível recuperar o Record pelo identificador retornado
+- [x] Sucesso do Auditor persiste um Audit Record
+- [x] Record inclui Document texto + hash, ids do Token, Claims e Findings
+- [x] É possível recuperar o Record pelo identificador retornado
 
 ## Feedback
 
@@ -18,4 +18,6 @@ Ao terminar a implementação: mover Kanban para `Feedback`, preencher a nota ab
 
 ## Implementation note
 
-_(vazio)_
+Porta opcional `records`. `createInMemoryAuditRecords()` grava Document (texto + sha256), Token (On-Chain Id + Market Alias), Claims e Findings. Sucesso devolve `recordId`; `records.get(id)` recupera.
+
+Como verificar: `npm test` (31).

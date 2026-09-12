@@ -1,0 +1,14 @@
+{
+  "id": "ethereum",
+  "symbol": "eth",
+  "name": "Ethereum",
+  "market_data": {
+    "current_price": {
+      "btc": 0.034,
+      "usd": 2345.67
+    },
+    "circulating_supply": 120526283.247,
+    "total_supply": 120526283.247,
+    "max_supply": null
+  }
+}
