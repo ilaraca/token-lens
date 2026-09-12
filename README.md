@@ -130,7 +130,7 @@ flowchart TD
   c[Claim após Zod] --> v{Found e citação<br/>substring do Document?}
   v -->|não| miss[Finding: missing_max_supply]
   v -->|sim| cap{max > 0 e circulating ≤ max?}
-  cap -->|sim| dil[Finding: pending_dilution<br/>percent = 100 × (max − circ) / max]
+  cap -->|sim| dil["Finding: pending_dilution<br/>percent = 100*(max-circ)/max"]
   cap -->|não| conf[Finding: source_conflict]
 ```
 
