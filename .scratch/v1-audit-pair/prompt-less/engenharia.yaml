@@ -1,0 +1,17 @@
+version: 1
+stack:
+  app: [TypeScript strict, Zod, Vercel AI SDK]
+padroes: [ports-and-adapters, result-pattern, fail-fast, seam-auditor-run]
+arquitetura:
+  fluxo: Auditor -> Extractor port + Market Data port + Record port
+  teste: dubles nas ports; motor e verify reais
+resiliencia:
+  market_failure: abort_audit
+  illegible_document: abort_before_extractor
+observabilidade:
+  logs:
+    formato: structured
+    sem_pii: true
+documentacao:
+  readme:
+    obrigatorio: false

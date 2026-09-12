@@ -1,0 +1,19 @@
+fluxo: Audit Pair para Audit Report
+happy:
+  - ids + document_legivel + snapshot + maxSupplyAmount found e citado → Pending Dilution pct
+bloqueios:
+  - trigger: On-Chain Id ou Market Alias ausente
+    efeito: erro_sem_report
+  - trigger: Document abaixo do limiar alfanumerico
+    efeito: erro_sem_extractor
+  - trigger: Market Data falhou ou schema invalido
+    efeito: erro_sem_report
+  - trigger: citacao nao e substring apos normalizacao
+    efeito: claim_nao_alimenta_motor
+decisoes:
+  - quando: maxSupplyAmount absent
+    entao: Missing Max Supply
+  - quando: circulating > max ou max <= 0
+    entao: Source Conflict
+  - quando: caveat verificado
+    entao: aparece no report sem alterar pct

@@ -1,0 +1,20 @@
+---
+description: Divide specs into vertical-slice tickets with Kanban, human feedback gates, and parallel agents
+alwaysApply: true
+---
+
+# Vertical slices, Kanban, feedback, parallel agents
+
+When turning a spec/PRD into implementation work (any repo), follow all four:
+
+1. **Vertical slices with trackable IDs** — Break the PRD into tracer-bullet tickets, each a complete end-to-end behavior (not a horizontal layer). Give each a stable marker (`01-slug`, issue number). Use a task graph (`Blocked by`); only the unblocked frontier may start. Prefer the tracker this repo already uses; if none, local markdown: `.scratch/<feature>/spec.md`, `.scratch/<feature>/issues/<NN>-<slug>.md`, `.scratch/<feature>/board.md`.
+
+2. **Feedback gate after each slice** — When a ticket is implemented, do not silently continue. Move it to Kanban `Feedback`, fill an `## Implementation note` (what shipped, how to verify), and **stop**. Dependents stay blocked until a human marks the ticket `Done`.
+
+3. **Kanban on every ticket** — Columns: `Todo` → `In progress` → `Feedback` → `Done`. Keep a feature `board.md` in sync. Separate triage (`ready-for-agent`, etc.) from Kanban if the repo uses both.
+
+4. **Parallel agents on the frontier** — Launch one implementer per unblocked ticket, concurrently, each on its own branch/worktree when the environment allows. After `01`+`02` style blockers land and are `Done`, run independent siblings together (e.g. adapter + next domain slice).
+
+5. **Prompt-less context** — Do not paste grill transcripts, full specs, or every ticket into an implementer. Give **pointers** + one compressed handoff (`docs/prompt-less/IMPLEMENT.md` when it exists). State lives in files (board, ticket Kanban), not in the chat. Load `CONTEXT.md` / ADRs / the current ticket only; open the spec if the ticket says so. Never send raw long docs when a dehydrated rule or pointer suffices.
+
+Do not start dependents while a blocker is still in `Feedback`. Do not treat a checkbox list of layers as tickets.
